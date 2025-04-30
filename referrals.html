@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referrals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="deposit.html"><i class="fas fa-money-bill-wave"></i> Deposit</a></li>
+                    <li><a href="withdraw.html"><i class="fas fa-hand-holding-usd"></i> Withdraw</a></li>
+                    <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="referrals.html" class="active"><i class="fas fa-user-friends"></i> Referrals</a></li>
+                    <li><a href="login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="signup.html" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="form-container" style="max-width: 900px;">
+                <h2>Your Referral Program</h2>
+                <div id="referralInfo" class="referral-info">
+                    <div class="loading">Please login to view your referral information</div>
+                </div>
+
+                <div id="referralStats" class="referral-stats" style="display: none;">
+                    <div class="stats-card">
+                        <h3>Your Referral Code</h3>
+                        <div class="referral-code-container">
+                            <span id="referralCode" class="referral-code"></span>
+                            <button id="copyCodeBtn" class="copy-btn"><i class="fas fa-copy"></i></button>
+                        </div>
+                        <p>Share this code with friends to earn 15% commission on their deposits!</p>
+                    </div>
+
+                    <div class="stats-card">
+                        <h3>Referral Link</h3>
+                        <div class="referral-link-container">
+                            <span id="referralLink" class="referral-link"></span>
+                            <button id="copyLinkBtn" class="copy-btn"><i class="fas fa-copy"></i></button>
+                        </div>
+                        <p>Share this link with friends to earn 15% commission on their deposits!</p>
+                    </div>
+
+                    <div class="stats-card">
+                        <h3>Referral Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value" id="totalReferrals">0</span>
+                                <span class="stat-label">Total Referrals</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="totalEarnings">$0.00</span>
+                                <span class="stat-label">Total Earnings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="referralTable" class="referral-table" style="display: none;">
+                    <h3>Your Referrals</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Earnings</th>
+                                </tr>
+                            </thead>
+                            <tbody id="referralTableBody">
+                                <!-- Referral data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2></h2>
+                    <p>This site was created on 1 March 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="deposit.html">Deposit</a></li>
+                        <li><a href="withdraw.html">Withdraw</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="referrals.html">Referrals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@invest.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if user is logged in
+            if (!isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load referral data
+            loadReferralData();
+        });
+
+        function loadReferralData() {
+            const currentUser = getCurrentUser();
+            if (!currentUser) return;
+
+            // Display referral code
+            const referralCodeElement = document.getElementById('referralCode');
+            if (referralCodeElement) {
+                referralCodeElement.textContent = currentUser.referralCode || 'N/A';
+            }
+
+            // Generate and display referral link
+            const referralLinkElement = document.getElementById('referralLink');
+            if (referralLinkElement) {
+                const baseUrl = window.location.origin + window.location.pathname.replace('referrals.html', 'signup.html');
+                const referralLink = `${baseUrl}?ref=${currentUser.referralCode}`;
+                referralLinkElement.textContent = referralLink;
+            }
+
+            // Setup copy buttons
+            setupCopyButton('copyCodeBtn', 'referralCode');
+            setupCopyButton('copyLinkBtn', 'referralLink');
+
+            // Get referral data
+            const referrals = getReferrals(currentUser.id);
+            const totalEarnings = currentUser.referralEarnings || 0;
+
+            // Update statistics
+            document.getElementById('totalReferrals').textContent = referrals.length;
+            document.getElementById('totalEarnings').textContent = `$${totalEarnings.toFixed(2)}`;
+
+            // Show referral stats section
+            document.getElementById('referralInfo').style.display = 'none';
+            document.getElementById('referralStats').style.display = 'block';
+
+            // Populate referral table
+            populateReferralTable(referrals);
+        }
+
+        function getReferrals(userId) {
+            const referrals = JSON.parse(localStorage.getItem(REFERRALS_KEY) || '[]');
+            const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+            
+            // Get referrals where this user is the referrer
+            const userReferrals = referrals.filter(ref => ref.referrerId === userId);
+            
+            // Add user info to each referral
+            return userReferrals.map(ref => {
+                const referredUser = users.find(u => u.id === ref.referredUserId) || {};
+                return {
+                    ...ref,
+                    referredUserName: referredUser.name || 'Unknown User',
+                    referredUserEmail: referredUser.email || 'N/A'
+                };
+            });
+        }
+
+        function populateReferralTable(referrals) {
+            const tableBody = document.getElementById('referralTableBody');
+            if (!tableBody) return;
+
+            // Clear existing rows
+            tableBody.innerHTML = '';
+
+            if (referrals.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="3" style="text-align: center;">No referrals yet</td>';
+                tableBody.appendChild(row);
+            } else {
+                // Sort referrals by date (newest first)
+                referrals.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+                // Add rows for each referral
+                referrals.forEach(referral => {
+                    const row = document.createElement('tr');
+                    
+                    const date = new Date(referral.createdAt).toLocaleDateString();
+                    const time = new Date(referral.createdAt).toLocaleTimeString();
+                    
+                    row.innerHTML = `
+                        <td>${date} ${time}</td>
+                        <td>${referral.referredUserName}</td>
+                        <td>$${referral.earnings.toFixed(2)}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+
+                // Show the table
+                document.getElementById('referralTable').style.display = 'block';
+            }
+        }
+
+        function setupCopyButton(buttonId, textElementId) {
+            const button = document.getElementById(buttonId);
+            const textElement = document.getElementById(textElementId);
+            
+            if (button && textElement) {
+                button.addEventListener('click', () => {
+                    const text = textElement.textContent;
+                    navigator.clipboard.writeText(text).then(() => {
+                        showAlert('Copied to clipboard!', 'success');
+                    }).catch(err => {
+                        showAlert('Failed to copy text', 'danger');
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+</html>

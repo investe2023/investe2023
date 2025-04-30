@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="deposit.html"><i class="fas fa-money-bill-wave"></i> Deposit</a></li>
+                    <li><a href="withdraw.html" class="active"><i class="fas fa-hand-holding-usd"></i> Withdraw</a></li>
+                    <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="refer.html"><i class="fas fa-user-plus"></i> Refer</a></li>
+                    <li><a href="login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="signup.html" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="form-container">
+                <h2>Withdraw Funds</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Available Balance</h3>
+                        <div class="value" id="currentBalance">$0.00</div>
+                    </div>
+                </div>
+                <form id="withdrawForm">
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" name="amount" min="20" required>
+                        <small>Minimum withdrawal amount: $20</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawalMethod">Withdrawal Method</label>
+                        <select id="withdrawalMethod" name="withdrawalMethod" required>
+                            <option value="">Select Withdrawal Method</option>
+                            <option value="Bkash">Bkash Personal</option>
+                            <option value="LTC">LTC</option>
+                            <option value="BTC">BTC</option>
+                            <option value="TRX">TRX</option>
+                            <option value="USDT">USDT (TRC20)</option>
+                        </select>
+                        <p style="color: red; font-weight: bold; margin-top: 10px;">Bkash Personal: (Only Send Money)</p>
+                        <p style="color: red; font-weight: bold;">Conversion Rate: $1 = 120 Taka</p>
+                        <p style="color: white; font-weight: bold;">LTC Address: (Enter your LTC address)</p>
+                        <p style="color: white; font-weight: bold;">BTC Address: (Enter your BTC address)</p>
+                        <p style="color: white; font-weight: bold;">TRX Address: (Enter your TRX address)</p>
+                        <p style="color: white; font-weight: bold;">USDT (TRC20) Address: (Enter your USDT address)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="withdrawalAddress">Withdrawal Address/Account</label>
+                        <input type="text" id="withdrawalAddress" name="withdrawalAddress" placeholder="Enter your withdrawal address or account" required>
+                    </div>
+                    <button type="submit" class="form-btn">Request Withdrawal</button>
+                </form>
+                <div class="alert alert-info">
+                    <p><i class="fas fa-info-circle"></i> Withdrawal requests are typically processed within 24 hours.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2></h2>
+                    <p>This site was created on 1 March 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="deposit.html">Deposit</a></li>
+                        <li><a href="withdraw.html">Withdraw</a></li>
+                        <li><a href="history.html">History</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@example.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

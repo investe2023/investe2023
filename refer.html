@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Program</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="deposit.html"><i class="fas fa-money-bill-wave"></i> Deposit</a></li>
+                    <li><a href="withdraw.html"><i class="fas fa-hand-holding-usd"></i> Withdraw</a></li>
+                    <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="refer.html" class="active"><i class="fas fa-user-plus"></i> Refer</a></li>
+                    <li><a href="login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="signup.html" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="form-container">
+                <h2>Referral Program</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Referral Commission</h3>
+                        <div class="value">15%</div>
+                    </div>
+                </div>
+                <div class="referral-content">
+                    <h3>How It Works</h3>
+                    <p>Earn 15% commission for every deposit made by users you refer!</p>
+                    <div class="referral-link">
+                        <label>Your Referral Link:</label>
+                        <div class="link-container" id="referralLink">
+                            https://invest.com/ref=USER123
+                        </div>
+                        <button class="copy-btn" id="copyReferralBtn">Copy Link</button>
+                    </div>
+                    <div class="referral-stats">
+                        <div class="stat-item">
+                            <h4>Total Referrals</h4>
+                            <div class="value" id="totalReferrals">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Total Earnings</h4>
+                            <div class="value" id="totalEarnings">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2></h2>
+                    <p>This site was created on 1 March 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="deposit.html">Deposit</a></li>
+                        <li><a href="withdraw.html">Withdraw</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="refer.html">Refer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@invest.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit - InvestPro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="deposit.html" class="active"><i class="fas fa-money-bill-wave"></i> Deposit</a></li>
+                    <li><a href="withdraw.html"><i class="fas fa-hand-holding-usd"></i> Withdraw</a></li>
+                    <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="refer.html"><i class="fas fa-user-plus"></i> Refer</a></li>
+                    <li><a href="login.html" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                    <li><a href="signup.html" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                    <li><a href="#" id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="form-container">
+                <h2>Make a Deposit</h2>
+                <form id="depositForm">
+                    <div class="form-group">
+                        <label for="plan">Select Investment Plan</label>
+                        <select id="plan" name="plan" required>
+                            <option value="1">Plan 1 - $10 (10% Daily Return)</option>
+                            <option value="2">Plan 2 - $15 (10% Daily Return)</option>
+                            <option value="3">Plan 3 - $20 (12% Daily Return)</option>
+                            <option value="4">Plan 4 - $30 (12% Daily Return)</option>
+                            <option value="5">Plan 5 - $50 (14% Daily Return)</option>
+                            <option value="6">Plan 6 - $100 (14% Daily Return)</option>
+                            <option value="7">Plan 7 - $200 (16% Daily Return)</option>
+                            <option value="8">Plan 8 - $500 (16% Daily Return)</option>
+                            <option value="9">Plan 9 - $1000 (18% Daily Return)</option>
+                            <option value="10">Plan 10 - $5000 (18% Daily Return)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" name="amount" min="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <div class="payment-options">
+                            <button type="button" class="payment-option" data-method="Bkash">Bkash</button>
+                            <button type="button" class="payment-option" data-method="LTC">LTC</button>
+                            <button type="button" class="payment-option" data-method="BTC">BTC</button>
+                            <button type="button" class="payment-option" data-method="TRX">TRX</button>
+                            <button type="button" class="payment-option" data-method="USDT">USDT</button>
+                            <h3>Payment Options</h3>
+                        </div>
+                        <select id="paymentMethod" name="paymentMethod" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="Bkash">Bkash Personal</option>
+                            <option value="LTC">LTC</option>
+                            <option value="BTC">BTC</option>
+                            <option value="TRX">TRX</option>
+                            <option value="USDT">USDT (TRC20)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="screenshot">Payment Screenshot</label>
+                        <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+                        <p class="form-hint">Please upload a screenshot of your payment confirmation</p>
+                    </div>
+                    <button type="submit" class="form-btn">Submit Deposit</button>
+                </form>
+
+                <div class="payment-methods">
+                    <h3>Payment Details</h3>
+                    <div class="payment-method" id="Bkash-details">
+                        <p style="color: red; font-weight: bold;">Bkash Personal: (Only Send Money)</p>
+                        <p style="color: red; font-weight: bold;">Conversion Rate: $1 = 120 Taka</p>
+                        <div class="address">01864545196</div>
+                    </div>
+                    <div class="payment-method" id="LTC-details">
+                        <p style="color: red; font-weight: bold;">LTC Address:</p>
+                        <div class="address" style="color: black; font-weight: bold;">ltc1q8pwesywx8rjse87t7m33t6jew3tdx2n5zxet6n</div>
+                    </div>
+                    <div class="payment-method" id="BTC-details">
+                        <p style="color: red; font-weight: bold;">BTC Address:</p>
+                        <div class="address" style="color: black; font-weight: bold;">bc1qcazw6vu56tr6uxfl5tattkfuk3yvzz63q9p08z</div>
+                    </div>
+                    <div class="payment-method" id="TRX-details">
+                        <p style="color: red; font-weight: bold;">TRX Address:</p>
+                        <div class="address" style="color: black; font-weight: bold;">TKPKcJwMpG9gV7TRx68BsXrYyMbDT2PR4k</div>
+                    </div>
+                    <div class="payment-method" id="USDT-details">
+                        <p style="color: red; font-weight: bold;">USDT (TRC20) Address:</p>
+                        <div class="address" style="color: black; font-weight: bold;">TKPKcJwMpG9gV7TRx68BsXrYyMbDT2PR4k</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2></h2>
+                    <p>This site was created on 1 March 2023.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="deposit.html">Deposit</a></li>
+                        <li><a href="withdraw.html">Withdraw</a></li>
+                        <li><a href="history.html">History</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@invest.com</p>
+                    
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Handle payment option button clicks
+        document.querySelectorAll('.payment-option').forEach(button => {
+            button.addEventListener('click', function() {
+                const method = this.dataset.method;
+                document.getElementById('paymentMethod').value = method;
+                document.getElementById('paymentMethod').dispatchEvent(new Event('change'));
+            });
+        });
+
+        // Show/hide payment details based on selected payment method
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            const selectedMethod = this.value;
+            const allDetails = document.querySelectorAll('.payment-method');
+            
+            allDetails.forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            if (selectedMethod) {
+                document.getElementById(`${selectedMethod}-details`).style.display = 'block';
+            }
+        });
+        
+        // Update amount based on selected plan
+        document.getElementById('plan').addEventListener('change', function() {
+            const planAmounts = {
+                '1': 10,
+                '2': 15,
+                '3': 20,
+                '4': 30,
+                '5': 50,
+                '6': 100,
+                '7': 200,
+                '8': 500,
+                '9': 1000,
+                '10': 5000
+            };
+            
+            const selectedPlan = this.value;
+            document.getElementById('amount').value = planAmounts[selectedPlan];
+        });
+        
+        // Trigger change event to set initial amount
+        document.getElementById('plan').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>
